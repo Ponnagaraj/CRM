@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+  <test thread-count="5" name="Test">
+<parameter name="maiId" value="ponnagarajchitrambalam@gmail.com"></parameter>
+<parameter name="pass" value="Naren0150"></parameter>
+<parameter name="organization" value="Sinapse Software"></parameter>
+
   <parameter name="number" value="1234567890"></parameter>
   <parameter name="city" value="Madurai"></parameter>
   <parameter name="language" value="Tamil"></parameter>
-  <test thread-count="5" name="Test">
-
+  <parameter name="duration" value="This Year"></parameter>
     <classes>
       <class name="org.test.RecruitCRM"/>
     </classes>

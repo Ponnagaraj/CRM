@@ -16,7 +16,7 @@ public class POM_RC01 {
 	@FindBy(xpath="//td/following::a[@class='media-a is-hidden-mobile']")
 	public WebElement canditateName;
 	
-	@FindBy(xpath="(//i[@class='material-icons'])[23]")
+	@FindBy(xpath="//a[@*='sTest-editCandidateDetailsPage']/child::i[@class='material-icons']")
 	public WebElement editIcon;
 	
 	@FindBy(id="sTest-candidateMobile")

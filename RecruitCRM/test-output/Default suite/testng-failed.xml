@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="org.test.RecruitCRM">
         <methods>
-          <include name="testCase03"/>
-          <include name="testCase08"/>
           <include name="testCase09"/>
-          <include name="testCase06"/>
-          <include name="testCase07"/>
           <include name="beforeTest"/>
+          <include name="testCase06"/>
           <include name="afterTest"/>
+          <include name="testCase07"/>
           <include name="testCase01"/>
           <include name="testCase10"/>
           <include name="testCase04"/>
           <include name="testCase05"/>
           <include name="testCase02"/>
+          <include name="testCase03"/>
+          <include name="testCase08"/>
         </methods>
       </class> <!-- org.test.RecruitCRM -->
     </classes>

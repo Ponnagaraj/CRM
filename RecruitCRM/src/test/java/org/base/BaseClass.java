@@ -14,12 +14,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -188,76 +183,13 @@ public class BaseClass {
 		FileUtils.copyFile(src, des);
 	}
 
-	// Data Driven
-	public static String getExcelCellValue(String filename, String sheetname, int row, int cell) throws IOException {
-		String dir = System.getProperty("user.dir");
-		File xl = new File(dir + "\\src\\test\\resources\\" + filename + ".xlsx");
-		FileInputStream f = new FileInputStream(xl);
-		Workbook w = new XSSFWorkbook(f);
-		Sheet sheet = w.getSheet(sheetname);
-		Row row2 = sheet.getRow(row);
-		Cell c = row2.getCell(cell);
-		int type = c.getCellType();
-		String value;
-		if (type == 1) {
-			value = c.getStringCellValue();
-		} else { 	 	
-			if (DateUtil.isCellDateFormatted(c)) {
-				Date date = c.getDateCellValue();
-				SimpleDateFormat si = new SimpleDateFormat();
-				value = si.format(date);
-			} else {
-				double d = c.getNumericCellValue();
-				long l = (long) d;
-				value = String.valueOf(l);
-			}
-		}
-		return value;
-	}
-
-	public static void setExcelCellValue(String fileName, String sheetname, int rownum, int cellnum, String value)
-			throws IOException {
-		String dir = System.getProperty("user.dir");
-		File f = new File(dir + "\\src\\test\\" + fileName + ".xlsx");
-		FileInputStream fi= new FileInputStream(f);
-		Workbook w = new XSSFWorkbook(fi);
-		w.getSheet(sheetname).createRow(rownum).createCell(cellnum).setCellValue(value);
-		FileOutputStream fo = new FileOutputStream(f);
-		w.write(fo);
-		fo.close();
-		/*try {
-			File f = new File(System.getProperty("user.dir") + "\\Datas\\" + fileName + ".xlsx");
-			FileInputStream fin = new FileInputStream(f);
-			Workbook wb = new XSSFWorkbook(fin);
-			Sheet sheet = wb.getSheet(sheetname);
-			Cell cell = sheet.getRow(rownum).getCell(cellnum);
-			if (cell == null) {
-				Cell createCell = sheet.getRow(rownum).createCell(cellnum);
-				createCell.setCellValue(value);
-			} else {
-				cell.setCellValue(value);
-			}
-			FileOutputStream fout = new FileOutputStream(f);
-			wb.write(fout);
-			fout.close();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new RuntimeException();
-
-		}*/
-		
-		
-	}
 	//Select Class by visibileText
 	public static void dropdownSelectByVisibleText(WebElement e, String VisibleText) {
 		Select s=new Select(e);
 		s.selectByVisibleText(VisibleText);
 	}
 	
-	//SoftAssertion
-	
+	//SoftAssertion	
 	public static void softAssertEquals(String actual, String expected, String Msg) {
 		SoftAssert s= new SoftAssert();
 		s.assertEquals(actual, expected, Msg);
@@ -310,8 +242,6 @@ public class BaseClass {
 
 		  for (int i = 0; i < dirContents.length; i++) {
 		      if (dirContents[i].getName().equals(fileName)) {
-		          // File has been found, it can now be deleted:
-		          //dirContents[i].delete();
 		          return true;
 		      }
 		          }
